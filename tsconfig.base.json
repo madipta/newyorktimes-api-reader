@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@base/dtos": ["libs/dtos/src/index.ts"],
+      "@base/data-curl": ["libs/data-curl/src/index.ts"],
+      "@base/redis-cache": ["libs/redis-cache/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
