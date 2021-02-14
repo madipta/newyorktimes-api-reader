@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
-import { ITopStoriesRoot, TopStoriesSectionType } from '@base/dtos';
 import { RedisCacheService } from '@base/redis-cache';
+import { IMostPopularRoot, MostPopularPeriodType } from '@base/dtos';
 
 @Injectable()
-export class TopStoriesService {
+export class MostPopularService {
   constructor(
     private configService: ConfigService,
     private redisCacheService: RedisCacheService
@@ -16,17 +16,17 @@ export class TopStoriesService {
   }
 
   private get BaseUrl() {
-    return this.configService.get<string>('NYT_TOP_STORIES_URL');
+    return this.configService.get<string>('NYT_MOST_POPULAR_URL');
   }
 
-  async getTopStories(section: TopStoriesSectionType) {
-    const url = `${this.BaseUrl}/${section}.json?api-key=${this.ApiKey}`;
+  async getMostPopular(period: MostPopularPeriodType) {
+    const url = `${this.BaseUrl}/${period}.json?api-key=${this.ApiKey}`;
     const key = this.redisCacheService.generateCacheKey(url);
-    const cached = await this.redisCacheService.get<ITopStoriesRoot>(key);
+    const cached = await this.redisCacheService.get<IMostPopularRoot>(key);
     if (cached) {
       return cached;
     }
-    const res = (await axios.get<ITopStoriesRoot>(url)).data;
+    const res = (await axios.get<IMostPopularRoot>(url)).data;
     this.redisCacheService.set(key, res);
     return res;
   }

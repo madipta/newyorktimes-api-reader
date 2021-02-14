@@ -13,3 +13,8 @@ export * from './article-search/person.interface';
 export * from './article-search/response.interface';
 export * from './article-search/root.interface';
 export * from './article-search/sort.interface';
+export * from './most-popular/media-metadata';
+export * from './most-popular/media.interface';
+export * from './most-popular/period.interface';
+export * from './most-popular/result.interface';
+export * from './most-popular/root.interface';
