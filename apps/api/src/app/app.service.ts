@@ -22,6 +22,10 @@ export class AppService {
     return this.topStoriesService.getTopStories(section);
   }
 
+  getTopStoriesSections() {
+    return this.topStoriesService.getSections();
+  }
+
   getMostPopular(period: MostPopularPeriodType) {
     return this.mostPopular.getMostPopular(period);
   }

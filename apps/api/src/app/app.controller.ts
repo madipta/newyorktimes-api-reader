@@ -15,6 +15,11 @@ export class AppController {
     return this.appService.getTopStories(section);
   }
 
+  @Get('top-stories-sections')
+  getTopStoriesSections() {
+    return this.appService.getTopStoriesSections();
+  }
+
   @Get('most-popular')
   getMostPopular(@Query('period') period: MostPopularPeriodType) {
     return this.appService.getMostPopular(period);

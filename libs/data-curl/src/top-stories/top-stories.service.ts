@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
-import { ITopStoriesRoot, TopStoriesSectionType } from '@base/dtos';
+import { ITopStoriesRoot, TopStoriesSectionType, TOP_STORIES_SECTIONS } from '@base/dtos';
 import { RedisCacheService } from '@base/redis-cache';
 
 @Injectable()
@@ -17,6 +17,10 @@ export class TopStoriesService {
 
   private get BaseUrl() {
     return this.configService.get<string>('NYT_TOP_STORIES_URL');
+  }
+
+  getSections() {
+    return TOP_STORIES_SECTIONS;
   }
 
   async getTopStories(section: TopStoriesSectionType) {
