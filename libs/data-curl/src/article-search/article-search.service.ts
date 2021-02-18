@@ -28,13 +28,12 @@ export class ArticleSearchService {
     const page = dto.page ? +dto.page : 0;
     const sort = dto.sort ?? 'relevance';
     const url = `${this.BaseUrl}?q=${q}&sort=${sort}&page=${page}&api-key=${this.ApiKey}`;
-    const key = this.redisCacheService.generateCacheKey(url);
-    const cached = await this.redisCacheService.get<IArticleSearchRoot>(key);
-    if (cached) {
+    const cached = await this.redisCacheService.get<IArticleSearchRoot>(url);
+    if (cached && cached.expired < Date.now()) {
       return cached;
     }
     const res = (await axios.get<IArticleSearchRoot>(url)).data;
-    this.redisCacheService.set(key, res);
+    this.redisCacheService.set(url, res);
     return res;
   }
 }

@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
-import { ITopStoriesRoot, TopStoriesSectionType, TOP_STORIES_SECTIONS } from '@base/dtos';
+import {
+  ITopStoriesRoot,
+  TopStoriesSectionType,
+  TOP_STORIES_SECTIONS,
+} from '@base/dtos';
 import { RedisCacheService } from '@base/redis-cache';
 
 @Injectable()
@@ -25,13 +29,12 @@ export class TopStoriesService {
 
   async getTopStories(section: TopStoriesSectionType) {
     const url = `${this.BaseUrl}/${section}.json?api-key=${this.ApiKey}`;
-    const key = this.redisCacheService.generateCacheKey(url);
-    const cached = await this.redisCacheService.get<ITopStoriesRoot>(key);
-    if (cached) {
+    const cached = await this.redisCacheService.get<ITopStoriesRoot>(url);
+    if (cached && cached.expired < Date.now()) {
       return cached;
     }
     const res = (await axios.get<ITopStoriesRoot>(url)).data;
-    this.redisCacheService.set(key, res);
+    this.redisCacheService.set(url, res);
     return res;
   }
 }
