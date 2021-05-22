@@ -11,7 +11,7 @@ export class AppController {
   constructor(private appService: AppService) {}
 
   @Get('top-stories')
-  getTopStories(@Query('section') section: TopStoriesSectionType) {
+  getTopStories(@Query('section') section: TopStoriesSectionType = 'home') {
     return this.appService.getTopStories(section);
   }
 
@@ -21,14 +21,14 @@ export class AppController {
   }
 
   @Get('most-popular')
-  getMostPopular(@Query('period') period: MostPopularPeriodType) {
+  getMostPopular(@Query('period') period: MostPopularPeriodType = 30) {
     return this.appService.getMostPopular(period);
   }
 
   @Get('article-search')
   getArticles(
     @Query('search') search: string,
-    @Query('sort') sort?: ArticleSearchSortType,
+    @Query('sort') sort: ArticleSearchSortType = 'relevance',
     @Query('page') page?: number
   ) {
     return this.appService.getArticles(search, sort, page);
