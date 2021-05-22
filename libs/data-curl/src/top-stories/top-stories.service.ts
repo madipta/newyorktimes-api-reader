@@ -34,7 +34,7 @@ export class TopStoriesService {
       return cached;
     }
     const res = (await axios.get<ITopStoriesRoot>(url)).data;
-    this.redisCacheService.set(url, res);
+    this.redisCacheService.set(url, res).then();
     return res;
   }
 }
