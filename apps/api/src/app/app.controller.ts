@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import {
+import type {
   ArticleSearchSortType,
   MostPopularPeriodType,
   TopStoriesSectionType,
