@@ -30,7 +30,7 @@ export class TopStoriesService {
   async getTopStories(section: TopStoriesSectionType) {
     const url = `${this.BaseUrl}/${section}.json?api-key=${this.ApiKey}`;
     const cached = await this.redisCacheService.get<ITopStoriesRoot>(url);
-    if (cached && cached.expired < Date.now()) {
+    if (cached && cached.expired > Date.now()) {
       return cached;
     }
     const res = (await axios.get<ITopStoriesRoot>(url)).data;

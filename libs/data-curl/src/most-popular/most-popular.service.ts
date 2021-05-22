@@ -22,7 +22,7 @@ export class MostPopularService {
   async getMostPopular(period: MostPopularPeriodType) {
     const url = `${this.BaseUrl}/${period}.json?api-key=${this.ApiKey}`;
     const cached = await this.redisCacheService.get<IMostPopularRoot>(url);
-    if (cached && cached.expired < Date.now()) {
+    if (cached && cached.expired > Date.now()) {
       return cached;
     }
     const res = (await axios.get<IMostPopularRoot>(url)).data;

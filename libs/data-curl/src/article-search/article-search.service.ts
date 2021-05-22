@@ -29,7 +29,7 @@ export class ArticleSearchService {
     const sort = dto.sort ?? 'relevance';
     const url = `${this.BaseUrl}?q=${q}&sort=${sort}&page=${page}&api-key=${this.ApiKey}`;
     const cached = await this.redisCacheService.get<IArticleSearchRoot>(url);
-    if (cached && cached.expired < Date.now()) {
+    if (cached && cached.expired > Date.now()) {
       return cached;
     }
     const res = (await axios.get<IArticleSearchRoot>(url)).data;
