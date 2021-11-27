@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@base/dtos": ["libs/dtos/src/index.ts"],
       "@base/data-curl": ["libs/data-curl/src/index.ts"],
+      "@base/dtos": ["libs/dtos/src/index.ts"],
       "@base/redis-cache": ["libs/redis-cache/src/index.ts"]
     }
   },
