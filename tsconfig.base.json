@@ -17,7 +17,8 @@
     "paths": {
       "@base/data-curl": ["libs/data-curl/src/index.ts"],
       "@base/dtos": ["libs/dtos/src/index.ts"],
-      "@base/redis-cache": ["libs/redis-cache/src/index.ts"]
+      "@base/redis-cache": ["libs/redis-cache/src/index.ts"],
+      "@base/shared-ui": ["libs/shared-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
