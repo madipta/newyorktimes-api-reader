@@ -1,29 +1,37 @@
+import Headline from '../components/headline/headline';
+
 export function Index() {
   return (
-    <div className="bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block">Ready to dive in?</span>
-          <span className="block text-indigo-600">
-            Start your free trial today.
-          </span>
-        </h2>
-        <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-          <div className="inline-flex rounded-md shadow">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-            >
-              Get started
-            </a>
+    <div className="font-serif">
+      <div className="bg-gray-900 tracking-tight py-3">
+        <h1 className="text-3xl md:text-4xl text-center text-white font-black mb-2">
+          The Washington Post
+        </h1>
+        <p className="tracking-wide text-sm text-center font-medium italic text-gray-400">
+          <a href="https://github.com/madipta/newyorktimes-api-reader">
+            source code
+          </a>
+        </p>
+      </div>
+      <div className="container bg-gray-50 text-gray-600 px-4 py-8 sm:my-8 mx-auto">
+        <p className="text-xl sm:text-2xl tracking-tight leading-none text-gray-700 font-extrabold mb-2">Built with @Nrwl/Nx monorepo</p>
+        <p className="text-sm">Frontend: React/NextJS, TailwindCSS</p>
+        <p className="text-sm">Backend: NestJs, Redis</p>
+      </div>
+      <div className="container mx-auto">
+        <div className="h-0 border-b border-gray-400"></div>
+        <div className="grid grid-cols-12 mt-3">
+          <h2 className="col-span-12 uppercase font-sans font-bold text-lg text-gray-800 px-4 md:px-0 mb-4">
+            Top Stories
+          </h2>
+          <div className="col-span-12 md:col-span-3 px-4 md:pl-0">
+            <Headline></Headline>
           </div>
-          <div className="ml-3 inline-flex rounded-md shadow">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
-            >
-              Learn more
-            </a>
+          <div className="col-span-12 md:col-span-6 px-4 md:border-l md:border-r md:border-gray-200">
+            <Headline></Headline>
+          </div>
+          <div className="col-span-12 md:col-span-3 px-4 md:pr-0">
+            <Headline></Headline>
           </div>
         </div>
       </div>

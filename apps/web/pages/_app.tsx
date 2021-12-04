@@ -6,7 +6,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to web!</title>
+        <title>The Washington Post - API</title>
       </Head>
       <div className="app">
         <main>
