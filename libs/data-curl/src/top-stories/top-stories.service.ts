@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { TopStoriesSectionType, TOP_STORIES_SECTIONS } from '@base/dtos';
+import { TopStoriesSectionType } from '@base/dtos';
 import { RedisCacheService } from '@base/redis-cache';
 
 @Injectable()
@@ -15,10 +15,6 @@ export class TopStoriesService {
     const path = this.configService.get<string>('NYT_TOP_STORIES_URL');
     const key = this.configService.get<string>('NYT_API_KEY');
     return `${base}/${path}/${section}.json?api-key=${key}`;
-  }
-
-  getSections() {
-    return TOP_STORIES_SECTIONS;
   }
 
   async getTopStories(section: TopStoriesSectionType) {
