@@ -6,7 +6,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>The Washington Post - API</title>
+        <title>The New York Times - API</title>
       </Head>
       <div className="app">
         <main>
