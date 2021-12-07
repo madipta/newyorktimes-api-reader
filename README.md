@@ -1,6 +1,6 @@
-# NY-Reader
+# NewYork Times API reader
 
-NewYork Times API reader (https://developer.nytimes.com/) using Nx monorepo, NestJs, Redis, Axios
+using Nx monorepo, NestJs, NextJs, Redis, Axios
 
 get your free account and api key at https://developer.nytimes.com/accounts/create
 
