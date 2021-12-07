@@ -8,11 +8,11 @@ get your free account and api key at https://developer.nytimes.com/accounts/crea
 
 `SET NYT_API_KEY={your api_key}`
 
-## if using docker-compose (default)
+## using docker-compose (default)
 
 Run `docker-compose up`
 
-## if using dedicated redis
+## using dedicated redis
 
 `SET REDIS_CACHE_HOST={your redis host}`  
 `SET REDIS_CACHE_PORT={your redis port}`
