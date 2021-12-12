@@ -1,12 +1,12 @@
-import HeadlineDto from './headline-dto';
-import Headline from './headline/headline';
-import './headlines.module.css';
+import Story from '../story/story'
+import StoryDto from '../story/story-dto';
+import './top-stories.module.css';
 
-export interface HeadlinesProps {
-  data: HeadlineDto[];
+export interface TopStoriesProps {
+  data: StoryDto[];
 }
 
-export function Headlines(props: HeadlinesProps) {
+export function TopStories(props: TopStoriesProps) {
   return (
     <>
       {props.data &&
@@ -18,11 +18,11 @@ export function Headlines(props: HeadlinesProps) {
                 key={data.url}
                 className="col-span-12 md:col-span-3 p-4 md:pl-0"
               >
-                <Headline
+                <Story
                   url={data.url}
                   title={data.title}
                   abstract={data.abstract}
-                ></Headline>
+                ></Story>
               </div>
             );
           }
@@ -32,11 +32,11 @@ export function Headlines(props: HeadlinesProps) {
                 key={data.url}
                 className="col-span-12 md:col-span-6 p-4 md:border-l md:border-r md:border-gray-200"
               >
-                <Headline
+                <Story
                   url={data.url}
                   title={data.title}
                   abstract={data.abstract}
-                ></Headline>
+                ></Story>
               </div>
             );
           }
@@ -45,11 +45,11 @@ export function Headlines(props: HeadlinesProps) {
               key={data.url}
               className="col-span-12 md:col-span-3 p-4 md:pr-0"
             >
-              <Headline
+              <Story
                 url={data.url}
                 title={data.title}
                 abstract={data.abstract}
-              ></Headline>
+              ></Story>
             </div>
           );
         })}
@@ -57,4 +57,4 @@ export function Headlines(props: HeadlinesProps) {
   );
 }
 
-export default Headlines;
+export default TopStories;

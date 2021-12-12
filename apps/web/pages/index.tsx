@@ -1,21 +1,22 @@
 import { TOP_STORIES_SECTIONS } from '@base/dtos';
+import axios from 'axios';
 import { useState } from 'react';
-import HeadlineDto from '../components/headlines/headline-dto';
-import Headlines from '../components/headlines/headlines';
+import StoryDto from '../components/story/story-dto';
+import TopStories from '../components/top-stories/top-stories'
 import TopStoriesSections from '../components/top-stories-sections/top-stories-sections';
 
 export function Index(props: {
   topStoriesSections: string[];
-  topHeadlines: HeadlineDto[];
+  topHeadlines: StoryDto[];
 }) {
   const [topStoriesSection, setTopStoriesSection] = useState('home');
   return (
     <div className="font-serif pb-16">
-      <div className="relative bg-gray-900 tracking-tight py-6">
-        <h1 className="leading-none text-2xl text-center text-white font-black">
+      <div className="relative bg-gray-900 tracking-tight py-4">
+        <h1 className="leading-none text-2xl text-center text-gray-200 font-black">
           The New York Times
         </h1>
-        <p className="absolute left-0 top-0 leading-none tracking-wide mt-5 ml-4">
+        <p className="absolute left-0 top-0 leading-none tracking-wide mt-4 ml-4">
           <a
             href="https://github.com/madipta/newyorktimes-api-reader"
             target="_blank"
@@ -23,11 +24,11 @@ export function Index(props: {
             className="text-xs text-center italic text-gray-600 hover:text-indigo-200"
           >
             <svg
-              height="28"
+              height="26"
               aria-hidden="true"
               viewBox="0 0 16 16"
               version="1.1"
-              width="28"
+              width="26"
               data-view-component="true"
               className="inline fill-current"
             >
@@ -69,47 +70,26 @@ export function Index(props: {
           <h2 className="col-span-12 tracking-wider uppercase font-bold px-4 md:px-0 mb-8">
             Top Stories
           </h2>
-          <Headlines data={props.topHeadlines}></Headlines>
+          <TopStories data={props.topHeadlines}></TopStories>
         </div>
       </div>
     </div>
   );
 }
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const topStoriesSections = TOP_STORIES_SECTIONS;
-  const topHeadlines = [
-    {
-      url: 'google1.com',
-      title: 'google 1 - search engine',
-      abstract: 'search engine',
-    },
-    {
-      url: 'google2.com',
-      title: 'google 2 - search engine',
-      abstract: 'search engine',
-    },
-    {
-      url: 'google3.com',
-      title: 'google 3 - search engine',
-      abstract: 'search engine',
-    },
-    {
-      url: 'google4.com',
-      title: 'google 1 - search engine',
-      abstract: 'search engine',
-    },
-    {
-      url: 'google5.com',
-      title: 'google 2 - search engine',
-      abstract: 'search engine',
-    },
-    {
-      url: 'google6.com',
-      title: 'google 3 - search engine',
-      abstract: 'search engine',
-    },
-  ];
+
+  const topStoriesUrl = `${process.env.API_PROTOCOL}://${process.env.API_HOST}:${process.env.API_PORT}/api/top-stories`;
+
+  const response = await axios.get(topStoriesUrl, {
+    timeout: 5000,
+    // validateStatus: () => {
+    //   return true;
+    // },
+  });
+
+  const topHeadlines = response.data.result.results || [];
 
   return {
     props: {

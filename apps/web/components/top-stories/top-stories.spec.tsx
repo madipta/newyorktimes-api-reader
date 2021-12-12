@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Headline from './headline';
+import TopStories from './top-stories';
 
-describe('Headline', () => {
+describe('TopStories', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Headline />);
+    const { baseElement } = render(<TopStories />);
     expect(baseElement).toBeTruthy();
   });
 });

@@ -1,9 +1,9 @@
-import { headlineDto } from '../headline-dto';
-import './headline.module.css';
+import StoryDto from './story-dto';
+import './story.module.css';
 
-export type HeadlineProps = headlineDto;
+export type StoryProps = StoryDto;
 
-export function Headline(props: HeadlineProps) {
+export function Story(props: StoryProps) {
   return (
     <div>
       <a
@@ -19,4 +19,4 @@ export function Headline(props: HeadlineProps) {
   );
 }
 
-export default Headline;
+export default Story;
