@@ -1,12 +1,16 @@
 import { TOP_STORIES_SECTIONS } from '@base/dtos';
 import { useState } from 'react';
+import HeadlineDto from '../components/headlines/headline-dto';
 import Headlines from '../components/headlines/headlines';
 import TopStoriesSections from '../components/top-stories-sections/top-stories-sections';
 
-export function Index(props: { topStoriesSections: string[] }) {
-  const [topStoriesSection, setTopStoriesSection] = useState("home");
+export function Index(props: {
+  topStoriesSections: string[];
+  topHeadlines: HeadlineDto[];
+}) {
+  const [topStoriesSection, setTopStoriesSection] = useState('home');
   return (
-    <div className="font-serif">
+    <div className="font-serif pb-16">
       <div className="relative bg-gray-900 tracking-tight py-6">
         <h1 className="leading-none text-2xl text-center text-white font-black">
           The New York Times
@@ -16,14 +20,14 @@ export function Index(props: { topStoriesSections: string[] }) {
             href="https://github.com/madipta/newyorktimes-api-reader"
             target="_blank"
             rel="noreferrer"
-            className="text-xs text-center italic text-gray-400 hover:text-indigo-200"
+            className="text-xs text-center italic text-gray-600 hover:text-indigo-200"
           >
             <svg
-              height="34"
+              height="28"
               aria-hidden="true"
               viewBox="0 0 16 16"
               version="1.1"
-              width="34"
+              width="28"
               data-view-component="true"
               className="inline fill-current"
             >
@@ -53,7 +57,7 @@ export function Index(props: { topStoriesSections: string[] }) {
         </p>
       </div>
       <div className="container mx-auto">
-        <div className="h-0 border-b border-gray-200"></div>
+        <div className="h-0 border-b border-gray-300"></div>
         <TopStoriesSections
           sections={props.topStoriesSections}
           selected={topStoriesSection}
@@ -61,11 +65,11 @@ export function Index(props: { topStoriesSections: string[] }) {
       </div>
       <div className="container mx-auto">
         <div className="h-0 border-b border-gray-400"></div>
-        <div className="grid grid-cols-12 mt-3">
+        <div className="grid grid-cols-12 mt-4">
           <h2 className="col-span-12 tracking-wider uppercase font-bold px-4 md:px-0 mb-8">
             Top Stories
           </h2>
-          <Headlines data={[]}></Headlines>
+          <Headlines data={props.topHeadlines}></Headlines>
         </div>
       </div>
     </div>
@@ -74,10 +78,43 @@ export function Index(props: { topStoriesSections: string[] }) {
 
 export function getStaticProps() {
   const topStoriesSections = TOP_STORIES_SECTIONS;
+  const topHeadlines = [
+    {
+      url: 'google1.com',
+      title: 'google 1 - search engine',
+      abstract: 'search engine',
+    },
+    {
+      url: 'google2.com',
+      title: 'google 2 - search engine',
+      abstract: 'search engine',
+    },
+    {
+      url: 'google3.com',
+      title: 'google 3 - search engine',
+      abstract: 'search engine',
+    },
+    {
+      url: 'google4.com',
+      title: 'google 1 - search engine',
+      abstract: 'search engine',
+    },
+    {
+      url: 'google5.com',
+      title: 'google 2 - search engine',
+      abstract: 'search engine',
+    },
+    {
+      url: 'google6.com',
+      title: 'google 3 - search engine',
+      abstract: 'search engine',
+    },
+  ];
 
   return {
     props: {
       topStoriesSections,
+      topHeadlines,
     },
   };
 }

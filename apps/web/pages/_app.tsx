@@ -7,6 +7,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>The New York Times - API</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <div className="app">
         <main>
