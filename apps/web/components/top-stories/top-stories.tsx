@@ -1,59 +1,31 @@
-import Story from '../story/story'
-import StoryDto from '../story/story-dto';
-import './top-stories.module.css';
+import { ITopStoriesResult } from '@base/dtos';
+import MainHeadline from './main-headline/main-headline';
+import TopHeadline from './top-headline/top-headline';
+import SecHeadline from './sec-headline/sec-headline';
 
 export interface TopStoriesProps {
-  data: StoryDto[];
+  data: ITopStoriesResult[];
 }
 
 export function TopStories(props: TopStoriesProps) {
+  const { data } = props;
+  const topHeadline = data.shift();
+  const mainHeadlines = [data.shift(), data.shift()];
+  const secHeadlines = [data.shift(), data.shift(), data.shift(), data.shift()];
+  const opinions = data.filter((val) => val.section === 'opinion');
+  const other = data.filter((val) => val.section !== 'opinion');
   return (
-    <>
-      {props.data &&
-        props.data.map((data, index) => {
-          const colIndex = index % 3;
-          if (colIndex === 0) {
-            return (
-              <div
-                key={data.url}
-                className="col-span-12 md:col-span-3 p-4 md:pl-0"
-              >
-                <Story
-                  url={data.url}
-                  title={data.title}
-                  abstract={data.abstract}
-                ></Story>
-              </div>
-            );
-          }
-          if (colIndex === 1) {
-            return (
-              <div
-                key={data.url}
-                className="col-span-12 md:col-span-6 p-4 md:border-l md:border-r md:border-gray-200"
-              >
-                <Story
-                  url={data.url}
-                  title={data.title}
-                  abstract={data.abstract}
-                ></Story>
-              </div>
-            );
-          }
-          return (
-            <div
-              key={data.url}
-              className="col-span-12 md:col-span-3 p-4 md:pr-0"
-            >
-              <Story
-                url={data.url}
-                title={data.title}
-                abstract={data.abstract}
-              ></Story>
-            </div>
-          );
-        })}
-    </>
+    <div className="container mx-auto">
+      <div className="h-0 border-b border-gray-400"></div>
+      <div className="grid grid-cols-12 mt-4">
+        <h2 className="col-span-12 tracking-wider uppercase font-bold px-4 md:px-0 mb-8">
+          Top Stories
+        </h2>
+        {mainHeadlines && <MainHeadline data={mainHeadlines}></MainHeadline>}
+        {topHeadline && <TopHeadline data={topHeadline}></TopHeadline>}
+        {secHeadlines &&<SecHeadline data={secHeadlines}></SecHeadline>}
+      </div>
+    </div>
   );
 }
 

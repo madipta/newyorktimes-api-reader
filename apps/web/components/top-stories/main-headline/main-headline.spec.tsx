@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SharedUi from './shared-ui';
+import MainHeadline from './main-headline';
 
-describe('SharedUi', () => {
+describe('MainHeadline', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SharedUi />);
+    const { baseElement } = render(<MainHeadline />);
     expect(baseElement).toBeTruthy();
   });
 });

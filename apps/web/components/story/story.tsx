@@ -1,13 +1,14 @@
-import StoryDto from './story-dto';
-import './story.module.css';
+import { ITopStoriesResult } from '@base/dtos';
 
-export type StoryProps = StoryDto;
+export type StoryProps = Partial<ITopStoriesResult>;
 
 export function Story(props: StoryProps) {
   return (
     <div>
       <a
         href={props.url}
+        target="_blank"
+        rel="noreferrer"
         className="font-medium text-2xl text-gray-800 cursor-pointer"
       >
         {props.title}
