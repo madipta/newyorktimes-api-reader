@@ -1,21 +1,21 @@
 import { ITopStoriesResult } from '@base/dtos';
 import Image from 'next/image';
 
-export interface MainHeadlineProps {
+export interface HeadlineProps {
   data: ITopStoriesResult[];
 }
 
-export function MainHeadline(props: MainHeadlineProps) {
+export function Headlines(props: HeadlineProps) {
   const { data } = props;
   return (
-    <>
-      <div className="col-span-12 md:col-span-3 p-4 md:pl-0">
-        {data &&
-          data.map((data) => {
-            const { url, title, abstract, byline, multimedia } = data;
-            const image = multimedia.find((val) => val.type === 'image');
-            return (
-              <div key={url} className="mb-10">
+    <div className="col-span-9 pr-4 border-r border-gray-200">
+      {data &&
+        data.map((data) => {
+          const { abstract, byline, multimedia, title, url } = data;
+          const image = multimedia.find((val) => val.type === 'image');
+          return (
+            <div key={url} className="grid grid-cols-12 gap-x-8 mb-10">
+              <div className="col-span-7">
                 <a
                   href={url}
                   target="_blank"
@@ -24,9 +24,9 @@ export function MainHeadline(props: MainHeadlineProps) {
                 >
                   {title}
                 </a>
-                <p className="font-sans text-sm text-gray-500 mb-3">
-                  {abstract}
-                </p>
+                <p className="text-sm text-gray-500 mt-2">{abstract}</p>
+              </div>
+              <div className="col-span-5">
                 {image && (
                   <>
                     <Image
@@ -42,11 +42,11 @@ export function MainHeadline(props: MainHeadlineProps) {
                   </>
                 )}
               </div>
-            );
-          })}
-      </div>
-    </>
+            </div>
+          );
+        })}
+    </div>
   );
 }
 
-export default MainHeadline;
+export default Headlines;

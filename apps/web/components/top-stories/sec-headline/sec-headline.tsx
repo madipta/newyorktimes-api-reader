@@ -1,6 +1,5 @@
 import { ITopStoriesResult } from '@base/dtos';
 
-/* eslint-disable-next-line */
 export interface SecHeadlineProps {
   data: ITopStoriesResult[];
 }
@@ -13,16 +12,16 @@ export function SecHeadline(props: SecHeadlineProps) {
         {data &&
           data.map((data) => {
             return (
-              <div key={data.url}>
+              <div key={data.url} className="mb-10">
                 <a
                   href={data.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium text-xl text-gray-800 cursor-pointer"
+                  className="leading-none font-medium text-xl text-gray-800 cursor-pointer"
                 >
                   {data.title}
                 </a>
-                <p className="font-sans text-sm text-gray-500 mt-1 mb-8">
+                <p className="font-sans text-sm text-gray-500">
                   {data.abstract}
                 </p>
               </div>

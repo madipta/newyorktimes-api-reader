@@ -3,7 +3,7 @@ export interface TopHeaderProps {}
 
 export function TopHeader(props: TopHeaderProps) {
   return (
-    <div className="sticky top-0 bg-white tracking-tight py-4 border-b border-gray-200">
+    <div className="sticky top-0 bg-white tracking-tight py-4 border-b border-gray-200 z-10">
       <h1 className="leading-none text-2xl text-center text-black font-black">
         The New York Times
       </h1>
