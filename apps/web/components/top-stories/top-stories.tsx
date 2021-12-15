@@ -1,6 +1,7 @@
 import { ITopStoriesResult } from '@base/dtos';
 import Headlines from './headlines/headlines';
 import MainHeadline from './main-headline/main-headline';
+import Opinions from './opinions/opinions';
 import TopHeadline from './top-headline/top-headline';
 import SecHeadline from './sec-headline/sec-headline';
 
@@ -28,11 +29,11 @@ export function TopStories(props: TopStoriesProps) {
       </div>
       <div className="grid grid-cols-12 my-8">
         <div className="col-span-12 h-0 border-b border-gray-300 mb-4"></div>
-        <h3 className="col-span-12 tracking-wider uppercase font-bold px-4 md:px-0 mb-8">
+        <h3 className="col-span-12 tracking-wider uppercase font-bold px-4 md:px-0 mb-4">
           More Articles
         </h3>
         <Headlines data={other}></Headlines>
-        <div className="col-span-3">%</div>
+        <Opinions data={opinions}></Opinions>
       </div>
     </div>
   );

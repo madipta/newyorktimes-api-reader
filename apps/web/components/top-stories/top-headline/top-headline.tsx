@@ -9,7 +9,7 @@ export function TopHeadline(props: TopHeadlineProps) {
   const { url, title, abstract, byline, multimedia } = props.data;
   const image = multimedia.find((val) => val.type === 'image');
   return (
-    <div className="col-span-12 md:col-span-6 p-4 md:border-l md:border-r md:border-gray-200 mb-8">
+    <div className="col-span-12 md:col-span-6 p-4 md:px-10 md:border-l md:border-r md:border-gray-200 mb-8">
       <a
         href={url}
         target="_blank"

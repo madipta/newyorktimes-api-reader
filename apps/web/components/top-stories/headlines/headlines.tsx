@@ -8,7 +8,7 @@ export interface HeadlineProps {
 export function Headlines(props: HeadlineProps) {
   const { data } = props;
   return (
-    <div className="col-span-9 pr-4 border-r border-gray-200">
+    <div className="col-span-12 md:col-span-9 pt-8 px-4 md:pl-0 md:pr-10 md:border-r border-gray-200">
       {data &&
         data.map((data) => {
           const { abstract, byline, multimedia, title, url } = data;
@@ -29,13 +29,16 @@ export function Headlines(props: HeadlineProps) {
               <div className="col-span-5">
                 {image && (
                   <>
-                    <Image
-                      src={image.url}
-                      alt={image.caption}
-                      width={image.width}
-                      height={image.height}
-                      layout="responsive"
-                    ></Image>
+                    <div className="max-h-52 overflow-hidden">
+                      <Image
+                        src={image.url}
+                        alt={image.caption}
+                        width={image.width}
+                        height={image.height}
+                        layout="responsive"
+                        className="object-cover"
+                      ></Image>
+                    </div>
                     <p className="leading-none font-sans text-xs text-right text-gray-400 mt-1">
                       {byline}
                     </p>
