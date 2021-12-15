@@ -1,11 +1,12 @@
-/* eslint-disable-next-line */
-export interface TopHeaderProps {}
+import Link from 'next/link';
 
-export function TopHeader(props: TopHeaderProps) {
+export function TopHeader() {
   return (
     <div className="sticky top-0 bg-white tracking-tight py-4 border-b border-gray-200 z-10">
       <h1 className="leading-none text-2xl text-center text-black font-black">
-        The New York Times
+        <Link href="/" passHref>
+          <a>The New York Times</a>
+        </Link>
       </h1>
       <p className="absolute left-0 top-0 leading-none tracking-wide mt-4 ml-4">
         <a

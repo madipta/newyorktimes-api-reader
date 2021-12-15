@@ -14,7 +14,7 @@ export function Section(props: SectionProps) {
       {data &&
         data.map((data) => {
           const { abstract, byline, multimedia, title, url } = data;
-          const image = multimedia.find((val) => val.type === 'image');
+          const image = multimedia?.find((val) => val.type === 'image');
           return (
             <div
               key={url}
@@ -57,7 +57,6 @@ export function Section(props: SectionProps) {
 
 export async function getStaticProps(context) {
   const topStoriesUrl = `${process.env.API_PROTOCOL}://${process.env.API_HOST}:${process.env.API_PORT}/api/top-stories?section=${context.params.id}`;
-
   const response = await axios.get(topStoriesUrl, {
     timeout: 5000,
     validateStatus: () => {
