@@ -5,9 +5,11 @@ using Nx monorepo, NestJs, NextJs, Redis, Axios
 get your free account and api key at https://developer.nytimes.com/accounts/create  
 
 <br />
+
 ![screen shot](https://raw.githubusercontent.com/madipta/newyorktimes-api-reader/master/images/screen-01.png)  
 
 <br />
+
 ![screen shot](https://raw.githubusercontent.com/madipta/newyorktimes-api-reader/master/images/screen-02.png)  
 
 <br />
