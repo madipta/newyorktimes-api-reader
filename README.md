@@ -4,23 +4,16 @@ using Nx monorepo, NestJs, NextJs, Redis, Axios
 
 get your free account and api key at https://developer.nytimes.com/accounts/create
 
-## set environment variable (optional)
+![screen shot](https://raw.githubusercontent.com/madipta/newyorktimes-api-reader/master/images/screen-01.png)
 
-`SET NYT_API_KEY={your api_key}`
+![screen shot](https://raw.githubusercontent.com/madipta/newyorktimes-api-reader/master/images/screen-01.png)
 
-## using docker-compose (default)
+
+## start redis server using docker-compose
+
+rename .env.sample to .env
 
 Run `docker-compose up`
-
-## using dedicated redis
-
-`SET REDIS_CACHE_HOST={your redis host}`  
-`SET REDIS_CACHE_PORT={your redis port}`
-
-## redis cache configuration (optional)
-
-`SET REDIS_CACHE_TTL={expiration time in seconds}`  
-`SET REDIS_CACHE_MAX={max item in cache}`
 
 ## start nestjs API server
 
