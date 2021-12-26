@@ -21,6 +21,9 @@ export function Section(props: SectionProps) {
         {data &&
           data.map((data) => {
             const { abstract, byline, multimedia, title, url } = data;
+            if (!url || !title || !abstract) {
+              return;
+            }
             const image = multimedia?.find((val) => val.type === 'image');
             return (
               <div
