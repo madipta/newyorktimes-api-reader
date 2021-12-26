@@ -18,14 +18,14 @@ get your free account and api key at https://developer.nytimes.com/accounts/crea
 
 rename .env.sample to .env
 
-Run `docker-compose up`  
+cmd execute `docker-compose up`  
 
 
 ## start nestjs API server
 
-`npx nx serve api`  
+cmd execute `npx nx serve api`  
 
 
 ## start nextjs web server
 
-`npx nx serve web`
+cmd execute `npx nx serve web`
